@@ -6,4 +6,8 @@
         <property name="message" value="Witaj Spring - by setter"/>
     </bean>
     <bean id="emailService" class="pl.coderslab.beans.EmailService" />
+    <bean id="messageSender" class="pl.coderslab.beans.MessageSender">
+        <constructor-arg ref="emailService" />
+        <property name="message" value="Message from xml" />
+    </bean>
 </beans>
