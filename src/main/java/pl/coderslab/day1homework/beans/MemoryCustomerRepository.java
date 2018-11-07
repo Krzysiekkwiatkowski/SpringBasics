@@ -1,18 +1,19 @@
 package pl.coderslab.day1homework.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class MemoryCustomerRepository implements CustomerRepository {
     private ArrayList<Customer> customers = new ArrayList<>();
     private CustomerLogger customerLogger;
 
     @Autowired
-    public MemoryCustomerRepository(CustomerLogger customerLogger) {
+    public MemoryCustomerRepository(@Qualifier("test") CustomerLogger customerLogger) {
         this.customerLogger = customerLogger;
     }
 

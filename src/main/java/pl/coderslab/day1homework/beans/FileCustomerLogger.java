@@ -1,14 +1,11 @@
 package pl.coderslab.day1homework.beans;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
 @Component
-@Primary
 public class FileCustomerLogger implements CustomerLogger {
     private String filename = "CustomerLogger.txt";
 
