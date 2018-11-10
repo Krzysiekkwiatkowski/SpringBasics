@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public class FormController {
     @GetMapping("/form")
     public String get(){
-        return "form.jsp";
+        return "form";
     }
 
     @PostMapping("/form")
