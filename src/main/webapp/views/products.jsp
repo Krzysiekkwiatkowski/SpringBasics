@@ -12,8 +12,13 @@
     <title>Title</title>
 </head>
 <body>
-<c:forEach items="${products}" var="product">
-    <p> ${product.quantity} ${product.product.name} ${product.product.price} </p>
-</c:forEach>
+<c:if test="${not empty sum}">
+<p> W koszyku jest ${size} pozycji. </p>
+<p> W koszyku jest ${sum} produktów. </p>
+<p> Wartość koszyka to: ${total}. </p>
+</c:if>
+<c:if test="${empty sum}">
+    Brak produktów w koszyku!
+</c:if>
 </body>
 </html>
