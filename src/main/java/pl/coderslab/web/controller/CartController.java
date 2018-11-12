@@ -23,7 +23,6 @@ public class CartController {
     }
 
     @RequestMapping("/addtocart/{id}/{quantity}")
-    @ResponseBody
     public String addtocart(HttpSession ses, @PathVariable("id") int id, @PathVariable("quantity") int quantity) {
         List<CartItem> products = (List<CartItem>)ses.getAttribute("products");
         Product product = ProduktDao.getList().get(id);
@@ -46,7 +45,7 @@ public class CartController {
             products.add(cartitem);
         }
         ses.setAttribute("products", products);
-        return "addtocart";
+        return "AddToCart";
     }
 
     @RequestMapping("/cart")
@@ -54,12 +53,10 @@ public class CartController {
         List<CartItem> products = (List<CartItem>)session.getAttribute("products");
         if(products != null) {
             int sum = 0;
-            for (CartItem cartItem : products) {
-                sum += cartItem.getQuantity();
-            }
             double total = 0.0;
             for (CartItem cartItem : products) {
-                total += cartItem.getProduct().getPrice();
+                sum += cartItem.getQuantity();
+                total += cartItem.getProduct().getPrice() * cartItem.getQuantity();
             }
             model.addAttribute("size", products.size());
             model.addAttribute("sum", sum);
